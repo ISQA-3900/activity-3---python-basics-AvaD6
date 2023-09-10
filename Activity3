@@ -1,0 +1,55 @@
+# Activity 3
+# Ava Douangkeo
+# ISQA 3900 - Web Application Development
+# Date: [09/10/2023]
+# Description: This program calculates the letter grade based on a numeric score input by the user.
+
+# Function to display the title
+def display_title():
+    print("Welcome to the Grade Calculator")
+
+# Function to get the total points earned from the user
+def get_totalPoints():
+    while True:
+        try:
+            total_points = int(input("Enter the total score (0-1000): "))
+            if 0 <= total_points <= 1000:
+                return total_points
+            else:
+                print("You must enter an integer value >= 0 and <= 1000. Try Again")
+        except ValueError:
+            print("You must enter a numeric value. Try Again")
+
+# Function to get the letter grade based on the average earned
+def get_letterGrade(averageEarned):
+    if 92 <= averageEarned <= 100:
+        return "A"
+    elif 88 <= averageEarned < 91.99:
+        return "B+"
+    elif 82 <= averageEarned < 87.99:
+        return "B"
+    elif 78 <= averageEarned < 81.99:
+        return "C+"
+    elif 70 <= averageEarned < 77.99:
+        return "C"
+    elif 60 <= averageEarned < 69.99:
+        return "D"
+    else:
+        return "F"
+
+# Main function
+def main():
+    display_title()
+    while True:
+        total_points = get_totalPoints()
+        average_earned = (total_points / 1000) * 100
+        letter_grade = get_letterGrade(average_earned)
+        print(f"You earned an average of {average_earned:.1f}%. Letter grade earned: {letter_grade}")
+
+        choice = input("Would you like to enter another score (y/n)?: ")
+        if choice.lower() != 'y':
+            print("Thank you")
+            break
+
+if __name__ == "__main__":
+    main()
